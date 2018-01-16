@@ -849,13 +849,14 @@ class HTTPSConnectionPool(HTTPConnectionPool):
         if not getattr(conn, 'sock', None):  # AppEngine might not have  `.sock`
             conn.connect()
 
-        if not conn.is_verified:
-            warnings.warn((
-                'Unverified HTTPS request is being made. '
-                'Adding certificate verification is strongly advised. See: '
-                'https://urllib3.readthedocs.io/en/latest/advanced-usage.html'
-                '#ssl-warnings'),
-                InsecureRequestWarning)
+        # if this is advisory, why won't you fucking shut up about it ever??
+        # STFU # if not conn.is_verified:
+        # STFU #     warnings.warn((
+        # STFU #         'Unverified HTTPS request is being made. '
+        # STFU #         'Adding certificate verification is strongly advised. See: '
+        # STFU #         'https://urllib3.readthedocs.io/en/latest/advanced-usage.html'
+        # STFU #         '#ssl-warnings'),
+        # STFU #         InsecureRequestWarning)
 
 
 def connection_from_url(url, **kw):
